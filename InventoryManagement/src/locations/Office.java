@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Office implements Storage {
 
+    int i = 1;
+    boolean success;
     String barcode;
     String location;
     FileReaderWriter fileData;
@@ -24,22 +26,29 @@ public class Office implements Storage {
         String s = barcode + " " + location;
         System.out.println("Data {" + s + "} will now be added to file");
         try {
-            fileData.addToInventory(s);
+            fileData.addToInventory(location, s, i);
         } catch (IOException e) {
             System.out.println("Failed to write data to file.");
         }
 
     }
 
-    public void take(){
-        System.out.println("Please enter the barcode of the item");
-        barcode = textInput.nextLine();
+    public void take(String s){
+
         System.out.println("Item " + barcode + " is at [" + location + "]");
     }
 
-    public void find(){
-        System.out.println("Please enter the barcode of the item");
-        barcode = textInput.nextLine();
+    public boolean find(String l, String s){
+        fileData = new FileReaderWriter();
+        try {
+            fileData.findInInventory(l, s);
+        } catch (IOException e) {
+            System.out.println("Failed to check item lists");
+        }
+        return success;
+    }
+
+    public void locate(String l, String s){
         System.out.println("Item " + barcode + " is at [" + location + "]");
     }
 }
