@@ -3,13 +3,14 @@ package locations;
 import fileRW.FileReaderWriter;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Warehouse implements Storage {
     int x;
     int y;
     int z;
+    int i = 3;
+    boolean success;
     String barcode;
     String location;
     FileReaderWriter fileData;
@@ -33,23 +34,34 @@ public class Warehouse implements Storage {
         String s = barcode + " " + location;
         System.out.println("Data {" + s + "} will now be added to file");
         try {
-            fileData.addToInventory(s);
+            fileData.addToInventory(location, s, i);
         } catch (IOException e) {
             System.out.println("Failed to write data to file.");
         }
 
     }
 
-    public void take(){
-        System.out.println("Please enter the barcode of the item");
-        barcode = textInput.nextLine();
+    public void take(String s){
+
         System.out.println("Item " + barcode + " is at [" + location + "]");
     }
 
-    public void find(){
-        System.out.println("Please enter the barcode of the item");
-        barcode = textInput.nextLine();
-        System.out.println("Item " + barcode + " is at [" + location + "]");
+    public boolean find(String l, String s){
+        fileData = new FileReaderWriter();
+        try {
+            success = fileData.findInInventory(l, s);
+        } catch (IOException e) {
+            System.out.println("Failed to use finder method");
+        }
+        return success;
     }
 
+    public void locate(String s){
+        fileData = new FileReaderWriter();
+        try {
+            fileData.locateInInventory(s);
+        } catch (IOException e) {
+            System.out.println("Failed to use locator method");
+        }
+    }
 }
