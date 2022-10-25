@@ -26,7 +26,7 @@ public class Office implements Storage {
         String s = barcode + " " + location;
         System.out.println("Data {" + s + "} will now be added to file");
         try {
-            fileData.addToInventory(location, s, i);
+            fileData.addToInventory("Office", s);
         } catch (IOException e) {
             System.out.println("Failed to write data to file.");
         }

@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class InventoryManagementSystem {
 
     Scanner textInput;
-    int i;
+    int i = 0;
+    int k = 0;
     boolean success;
 
     public InventoryManagementSystem() {
@@ -22,7 +23,6 @@ public class InventoryManagementSystem {
         Storage item;
 
         while (true) {
-            i = 0;
             System.out.println("What's your command? (store, take, find, quit)");
             operation = textInput.nextLine();
             System.out.println("You chose: " + operation);
@@ -39,12 +39,14 @@ public class InventoryManagementSystem {
                 if (location.equals("office")) {
                     item = new Office();
                     item.store();
+                    k++;
                 }
                 if (location.equals("warehouse")) {
                     item = new Warehouse();
                     item.store();
+                    k++;
                 }
-                else {
+                if (k == 0) {
                     System.out.println("Sorry I couldn't locate the storage facility you're looking for.");
                 }
             }
@@ -60,17 +62,17 @@ public class InventoryManagementSystem {
                 String barcode = textInput.nextLine();
                 item = new Office();
                 success = item.find("Office", barcode);
-                if (success == true) {
+                if (success) {
                     item.locate("Office", barcode);
                 }
-                if (success == false) {
+                if (!success) {
                     item = new Warehouse();
                     success = item.find("Warehouse", barcode);
                 }
-                if (success == true) {
+                if (success) {
                     item.locate("Warehouse", barcode);
                 }
-                if (success == false) {
+                if (!success) {
                     System.out.println("Barcode: " + barcode + " could not be found.");
                 }
             }

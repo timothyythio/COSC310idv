@@ -34,7 +34,7 @@ public class Warehouse implements Storage {
         String s = barcode + " " + location;
         System.out.println("Data {" + s + "} will now be added to file");
         try {
-            fileData.addToInventory(location, s, i);
+            fileData.addToInventory("Warehouse", s);
         } catch (IOException e) {
             System.out.println("Failed to write data to file.");
         }
@@ -56,10 +56,10 @@ public class Warehouse implements Storage {
         return success;
     }
 
-    public void locate(String s){
+    public void locate(String l, String s){
         fileData = new FileReaderWriter();
         try {
-            fileData.locateInInventory(s);
+            fileData.locateInInventory(l, s);
         } catch (IOException e) {
             System.out.println("Failed to use locator method");
         }
