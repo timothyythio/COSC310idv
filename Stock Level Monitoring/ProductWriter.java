@@ -36,8 +36,8 @@ public class ProductWriter {
 	public static void writeData(String id, String pname, String pnum, String plab, String startin, String inrec, String inship, String inhand, String minreq) {
 		try {
 				
-			File file = new File("C:\\Users\\User\\Desktop\\COSC310 A2\\products.txt");
-			FileWriter fw = new FileWriter(file, true);
+			File file = new File("products.txt");
+			FileWriter fw = new FileWriter(file.getPath(), true);
 			BufferedWriter bw = new BufferedWriter(fw);
 
 				
