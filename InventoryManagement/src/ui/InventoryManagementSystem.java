@@ -10,7 +10,6 @@ public class InventoryManagementSystem {
 
     Scanner textInput;
     int i = 0;
-    int k = 0;
     boolean success;
 
     public InventoryManagementSystem() {
@@ -39,14 +38,12 @@ public class InventoryManagementSystem {
                 if (location.equals("office")) {
                     item = new Office();
                     item.store();
-                    k++;
                 }
-                if (location.equals("warehouse")) {
+                else if (location.equals("warehouse")) {
                     item = new Warehouse();
                     item.store();
-                    k++;
                 }
-                if (k == 0) {
+                else {
                     System.out.println("Sorry I couldn't locate the storage facility you're looking for.");
                 }
             }
@@ -60,21 +57,23 @@ public class InventoryManagementSystem {
                 i++;
                 System.out.println("Please enter the barcode of the item you want to take.");
                 String barcode = textInput.nextLine();
+
                 item = new Office();
                 success = item.find("Office", barcode);
                 if (success) {
                     item.locate("Office", barcode);
                 }
-                if (!success) {
+                else {
                     item = new Warehouse();
                     success = item.find("Warehouse", barcode);
+                    if (success) {
+                        item.locate("Warehouse", barcode);
+                    }
+                    else {
+                        System.out.println("Barcode: " + barcode + " could not be found.");
+                    }
                 }
-                if (success) {
-                    item.locate("Warehouse", barcode);
-                }
-                if (!success) {
-                    System.out.println("Barcode: " + barcode + " could not be found.");
-                }
+
             }
 
             if (i == 0) {

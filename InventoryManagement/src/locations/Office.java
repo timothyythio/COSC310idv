@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Office implements Storage {
 
-    int i = 1;
     boolean success;
     String barcode;
     String location;
@@ -41,14 +40,19 @@ public class Office implements Storage {
     public boolean find(String l, String s){
         fileData = new FileReaderWriter();
         try {
-            fileData.findInInventory(l, s);
+            success = fileData.findInInventory(l, s);
         } catch (IOException e) {
-            System.out.println("Failed to check item lists");
+            System.out.println("Failed to use finder method");
         }
         return success;
     }
 
-    public void locate(String l, String s){
-        System.out.println("Item " + barcode + " is at [" + location + "]");
+    public void locate(String storage, String barcode){
+        fileData = new FileReaderWriter();
+        try {
+            fileData.locateInInventory(storage, barcode);
+        } catch (IOException e) {
+            System.out.println("Failed to use locator method");
+        }
     }
 }

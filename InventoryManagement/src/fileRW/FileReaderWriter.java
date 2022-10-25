@@ -11,7 +11,7 @@ public class FileReaderWriter {
 
     int a;
     int i;
-    boolean success = false;
+    boolean success;
     List<String> lines;
     PrintWriter writer;
     public void addToInventory(String storage, String spot) throws IOException {
@@ -48,13 +48,26 @@ public class FileReaderWriter {
 
     }
 
-    public boolean findInInventory(String storage, String spot) throws IOException {
-
+    public boolean findInInventory(String storage, String barcode) throws IOException {
+        if (storage.equals("Office")) {
+            lines = Files.readAllLines(Paths.get("office.txt"));
+            System.out.println("office.txt read");
+        }
+        if (storage.equals("Warehouse")) {
+            lines = Files.readAllLines(Paths.get("warehouse.txt"));
+            System.out.println("warehouse.txt read");
+        }
+        for (String line : lines){
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            if (barcode.equals(partsOfLine.get(0))) {
+                success = true;
+            }
+        }
         return success;
     }
 
-    public void locateInInventory(String storage, String spot) throws IOException {
-
+    public void locateInInventory(String storage, String barcode) throws IOException {
+        System.out.println("Order to locate: " + storage + " " + barcode + " received");
     }
 
     public static ArrayList<String> splitOnSpace(String line){
