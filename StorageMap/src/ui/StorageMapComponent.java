@@ -6,13 +6,13 @@ import locations.Warehouse;
 
 import java.util.Scanner;
 
-public class InventoryManagementSystem {
+public class StorageMapComponent {
 
     Scanner textInput;
     int i = 0;
     boolean success;
 
-    public InventoryManagementSystem() {
+    public StorageMapComponent() {
         textInput = new Scanner(System.in);
         processOperations();
     }
@@ -84,6 +84,6 @@ public class InventoryManagementSystem {
     }
 
     public static void main(String[] args) {
-        new InventoryManagementSystem();
+        new StorageMapComponent();
     }
 }

@@ -14,7 +14,7 @@ public class FileReaderWriter {
     boolean success;
     List<String> lines;
     PrintWriter writer;
-    public void addToInventory(String storage, String spot) throws IOException {
+    public void storeIntoInventory(String storage, String spot) throws IOException {
         if (storage.equals("Office")) {
             lines = Files.readAllLines(Paths.get("office.txt"));
             writer = new PrintWriter("office.txt","UTF-8");
