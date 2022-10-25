@@ -5,8 +5,10 @@ import fileRW.FileReaderWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Office implements Storage {
-
+public class Warehouse implements Storage {
+    int x;
+    int y;
+    int z;
     boolean success;
     String barcode;
     String location;
@@ -18,14 +20,20 @@ public class Office implements Storage {
         System.out.println("Please enter the barcode of the item");
         barcode = textInput.nextLine();
 
-        System.out.println("Please enter the name of the storage space");
-        location = textInput.nextLine();
+        System.out.println("Please enter the x coordinate of the storage space");
+        x = textInput.nextInt();
+        System.out.println("Please enter the y coordinate of the storage space");
+        y = textInput.nextInt();
+        System.out.println("Please enter the z coordinate of the storage space");
+        z = textInput.nextInt();
+
+        location = x + " " + y + " " + z;
 
         fileData = new FileReaderWriter();
         String s = barcode + " " + location;
         System.out.println("Data {" + s + "} will now be added to file");
         try {
-            fileData.addToInventory("Office", s);
+            fileData.storeIntoInventory("Warehouse", s);
         } catch (IOException e) {
             System.out.println("Failed to write data to file.");
         }
