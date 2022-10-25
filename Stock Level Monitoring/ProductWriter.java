@@ -4,7 +4,7 @@ import java.io.*;
 
 
 public class ProductWriter {
-	public static void writeProduct() {
+	public static void addProduct() {
 		
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter New Product ID: ");
