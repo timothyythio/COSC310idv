@@ -51,8 +51,8 @@ public class DataReader {
 		String[] fetch = prodReturn(prod);
 		fetch[changeNo] = change;
 		try {
-			File file = new File("C:\\Users\\User\\Desktop\\COSC310 A2\\products.txt");
-			FileWriter fw = new FileWriter(file, true);
+			File file = new File("products.txt");
+			FileWriter fw = new FileWriter(file.getPath(), true);
 			BufferedWriter bw = new BufferedWriter(fw);	
 			
 			for (int i = 0; i < fetch.length; i++) {
@@ -69,7 +69,8 @@ public class DataReader {
 	public static String[] prodReturn(String s) {
 		String[] result = new String[9];
 		try {
-			Scanner sc = new Scanner(new File("C:\\Users\\User\\Desktop\\COSC310 A2\\products.txt"));
+			File file = new File("products.txt");
+			Scanner sc = new Scanner(file.getPath());
 			for (int i = 1; sc.hasNext(); i++) {
 				String line = sc.nextLine();
 				String[] data = line.split(", ");
@@ -91,7 +92,8 @@ public class DataReader {
 	public static int lineReturn(String s) {
 		int result = 0;
 		try {
-			Scanner sc = new Scanner(new File("C:\\Users\\User\\Desktop\\COSC310 A2\\products.txt"));
+			File file = new File("products.txt");
+			Scanner sc = new Scanner(file.getPath());
 			for (int i = 1; sc.hasNext(); i++) {
 				String line = sc.nextLine();
 				String[] data = line.split(", ");
