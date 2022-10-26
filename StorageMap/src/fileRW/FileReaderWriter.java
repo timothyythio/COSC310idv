@@ -14,19 +14,16 @@ public class FileReaderWriter {
     boolean success;
     List<String> lines;
     PrintWriter writer;
-    public void storeIntoInventory(String storage, String spot) throws IOException {
+
+    public void listInventory(String storage) throws IOException {
         if (storage.equals("Office")) {
             lines = Files.readAllLines(Paths.get("office.txt"));
-            writer = new PrintWriter("office.txt","UTF-8");
             i = 1;
         }
         if (storage.equals("Warehouse")) {
             lines = Files.readAllLines(Paths.get("warehouse.txt"));
-            writer = new PrintWriter("warehouse.txt","UTF-8");
             i = 3;
         }
-
-        lines.add(spot);
         for (String line : lines){
             ArrayList<String> partsOfLine = splitOnSpace(line);
             System.out.print("Barcode: "+partsOfLine.get(0) + " ");
@@ -38,24 +35,30 @@ public class FileReaderWriter {
                 System.out.print(partsOfLine.get(a));
             }
             System.out.println();
+        }
+    }
+    public void storeIntoInventory(String storage, String spot) throws IOException {
+        if (storage.equals("Office")) {
+            lines = Files.readAllLines(Paths.get("office.txt"));
+            writer = new PrintWriter("office.txt","UTF-8");
+        }
+        if (storage.equals("Warehouse")) {
+            lines = Files.readAllLines(Paths.get("warehouse.txt"));
+            writer = new PrintWriter("warehouse.txt","UTF-8");
+        }
+        lines.add(spot);
+        for (String line : lines){
             writer.println(line);
         }
-        lines.remove(spot); //DEBUG only, keep source files unchanged
         writer.close();
-    }
-
-    public void takeFromInventory(String s) throws IOException {
-
     }
 
     public boolean findInInventory(String storage, String barcode) throws IOException {
         if (storage.equals("Office")) {
             lines = Files.readAllLines(Paths.get("office.txt"));
-            System.out.println("office.txt read");
         }
         if (storage.equals("Warehouse")) {
             lines = Files.readAllLines(Paths.get("warehouse.txt"));
-            System.out.println("warehouse.txt read");
         }
         for (String line : lines){
             ArrayList<String> partsOfLine = splitOnSpace(line);
@@ -67,7 +70,28 @@ public class FileReaderWriter {
     }
 
     public void locateInInventory(String storage, String barcode) throws IOException {
-        System.out.println("Order to locate: " + storage + " " + barcode + " received");
+        System.out.println("Item " + barcode + " is in the " + storage + ".");
+    }
+
+    public void takeFromInventory(String storage, String barcode) throws IOException {
+        if (storage.equals("Office")) {
+            lines = Files.readAllLines(Paths.get("office.txt"));
+            writer = new PrintWriter("office.txt","UTF-8");
+        }
+        if (storage.equals("Warehouse")) {
+            lines = Files.readAllLines(Paths.get("warehouse.txt"));
+            writer = new PrintWriter("warehouse.txt","UTF-8");
+        }
+        for (String line : lines){
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            if (barcode.equals(partsOfLine.get(0))) {
+                System.out.println("Item " + barcode + " is in the " + storage + " ready for pick up.");
+            }
+            else {
+                writer.println(line);
+            }
+        }
+        writer.close();
     }
 
     public static ArrayList<String> splitOnSpace(String line){
