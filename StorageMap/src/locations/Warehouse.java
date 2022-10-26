@@ -15,6 +15,14 @@ public class Warehouse implements Storage {
     FileReaderWriter fileData;
     Scanner textInput = new Scanner(System.in);
 
+    public void list() {
+        fileData = new FileReaderWriter();
+        try {
+            fileData.listInventory("Warehouse");
+        } catch (IOException e) {
+            System.out.println("Failed to read data from file.");
+        }
+    }
     //Format of spots: x-coordinate, y-coordinate, z-coordinate
     public void store(){
         System.out.println("Please enter the barcode of the item");
@@ -39,16 +47,10 @@ public class Warehouse implements Storage {
         }
 
     }
-
-    public void take(String s){
-
-        System.out.println("Item " + barcode + " is at [" + location + "]");
-    }
-
-    public boolean find(String l, String s){
+    public boolean find(String storage, String barcode){
         fileData = new FileReaderWriter();
         try {
-            success = fileData.findInInventory(l, s);
+            success = fileData.findInInventory(storage, barcode);
         } catch (IOException e) {
             System.out.println("Failed to use finder method");
         }
@@ -61,6 +63,14 @@ public class Warehouse implements Storage {
             fileData.locateInInventory(storage, barcode);
         } catch (IOException e) {
             System.out.println("Failed to use locator method");
+        }
+    }
+    public void take(String storage, String barcode){
+        fileData = new FileReaderWriter();
+        try {
+            fileData.takeFromInventory(storage, barcode);
+        } catch (IOException e) {
+            System.out.println("Failed to use taker method");
         }
     }
 }
