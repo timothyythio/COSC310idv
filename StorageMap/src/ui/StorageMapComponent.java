@@ -13,8 +13,6 @@ import java.util.Scanner;
 
 public class StorageMapComponent {
 
-    //debug state: 0 = use provided dataset, 1 = empty dataset, else disabled
-    int debug = 0;
     List<String> lines;
     PrintWriter writer;
 
@@ -31,20 +29,6 @@ public class StorageMapComponent {
     }
     public StorageMapComponent() {
         textInput = new Scanner(System.in);
-        if (debug == 0) {
-            try {
-                debugUseProvidedDataset();
-            } catch (IOException e) {
-                System.out.println("Debug phase: fails to inject test data");
-            }
-        }
-        if (debug == 1) {
-            try {
-                debugEmptyDataset();
-            } catch (IOException e) {
-                System.out.println("Debug phase: fails to empty data");
-            }
-        }
         processOperations();
     }
 
@@ -82,8 +66,7 @@ public class StorageMapComponent {
 
     }
 
-
-    private void list() {
+    public void list() {
         System.out.println("Which storage facility would you like to check? (office or warehouse)");
         String location = textInput.nextLine();
 
@@ -154,16 +137,16 @@ public class StorageMapComponent {
         success = item.find("Office", barcode);
         if (success) {
             item.locate("Office", barcode);
+            i = true;
         }
-        else {
-            item = new Warehouse();
-            success = item.find("Warehouse", barcode);
-            if (success) {
-                item.locate("Warehouse", barcode);
-            }
-            else {
-                System.out.println("Barcode: " + barcode + " could not be found.");
-            }
+        item = new Warehouse();
+        success = item.find("Warehouse", barcode);
+        if (success) {
+            item.locate("Warehouse", barcode);
+            i = true;
+        }
+        if (!i) {
+            System.out.println("Barcode: " + barcode + " could not be found.");
         }
     }
 
@@ -188,24 +171,4 @@ public class StorageMapComponent {
         }
     }
 
-    private void debugUseProvidedDataset() throws IOException {
-        lines = Files.readAllLines(Paths.get("office_backup.txt"));
-        writer = new PrintWriter("office.txt","UTF-8");
-        for (String line : lines){
-            writer.println(line);
-        }
-        writer.close();
-        lines = Files.readAllLines(Paths.get("warehouse_backup.txt"));
-        writer = new PrintWriter("warehouse.txt","UTF-8");
-        for (String line : lines){
-            writer.println(line);
-        }
-        writer.close();
-    }
-    private void debugEmptyDataset() throws IOException {
-        writer = new PrintWriter("office.txt","UTF-8");
-        writer.close();
-        writer = new PrintWriter("warehouse.txt","UTF-8");
-        writer.close();
-    }
 }

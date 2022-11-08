@@ -12,6 +12,7 @@ public class FileReaderWriter {
     int a;
     int i;
     boolean success;
+    String location;
     List<String> lines;
     PrintWriter writer;
 
@@ -34,9 +35,9 @@ public class FileReaderWriter {
                 }
                 System.out.print(partsOfLine.get(a));
             }
-            System.out.println();
+                System.out.println();
+            }
         }
-    }
     public void storeIntoInventory(String storage, String spot) throws IOException {
         if (storage.equals("Office")) {
             lines = Files.readAllLines(Paths.get("office.txt"));
@@ -70,22 +71,45 @@ public class FileReaderWriter {
     }
 
     public void locateInInventory(String storage, String barcode) throws IOException {
-        System.out.println("Item " + barcode + " is in the " + storage + ".");
+        if (storage.equals("Office")) {
+            lines = Files.readAllLines(Paths.get("office.txt"));
+            i = 1;
+        }
+        if (storage.equals("Warehouse")) {
+            lines = Files.readAllLines(Paths.get("warehouse.txt"));
+            i = 3;
+        }
+        for (String line : lines){
+            ArrayList<String> partsOfLine = splitOnSpace(line);
+            if (barcode.equals(partsOfLine.get(0))) {
+                location = partsOfLine.get(1);
+                for (a = 2; a <= i; a++) {
+                    location += ", " + partsOfLine.get(a);
+                }
+                System.out.println("Item " + barcode + " is in the " + storage + " spot [" + location + "].");
+            }
+        }
     }
 
     public void takeFromInventory(String storage, String barcode) throws IOException {
         if (storage.equals("Office")) {
             lines = Files.readAllLines(Paths.get("office.txt"));
             writer = new PrintWriter("office.txt","UTF-8");
+            i = 1;
         }
         if (storage.equals("Warehouse")) {
             lines = Files.readAllLines(Paths.get("warehouse.txt"));
             writer = new PrintWriter("warehouse.txt","UTF-8");
+            i = 3;
         }
         for (String line : lines){
             ArrayList<String> partsOfLine = splitOnSpace(line);
             if (barcode.equals(partsOfLine.get(0))) {
-                System.out.println("Item " + barcode + " is in the " + storage + " ready for pick up.");
+                location = partsOfLine.get(1);
+                for (a = 2; a <= i; a++) {
+                    location += ", " + partsOfLine.get(a);
+                }
+                System.out.println("Item " + barcode + " is in the " + storage + " spot [" + location + "] ready for pick up.");
             }
             else {
                 writer.println(line);
