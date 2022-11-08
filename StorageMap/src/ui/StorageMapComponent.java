@@ -20,7 +20,11 @@ public class StorageMapComponent {
 
     Scanner textInput;
     Storage item;
+    String location;
+    String response;
     boolean success;
+    boolean i = false;
+    int g;
 
     public static void main(String[] args) {
         new StorageMapComponent();
@@ -96,20 +100,51 @@ public class StorageMapComponent {
         }
     }
     private void store() {
-        System.out.println("Where do you want to store this item? (office or warehouse)");
-        String location = textInput.nextLine();
+        System.out.println("Please enter the barcode of the item.");
+        String barcode = textInput.nextLine();
 
-        if (location.equals("office")) {
-            item = new Office();
-            item.store();
-        }
-        else if (location.equals("warehouse")) {
+        item = new Office();
+        success = item.find("Office", barcode);
+        location = "Office";
+        if (!success) {
             item = new Warehouse();
-            item.store();
+            success = item.find("Warehouse", barcode);
+            location = "Warehouse";
+        }
+        if (success) {
+            System.out.println("Matching barcode has been found in " + location + ", proceed to add? (Y for Yes or N for No)");
+            response = textInput.nextLine();
+            if (response.equals("Y")) {
+                g = 1;
+            }
+            else if (response.equals("N")) {
+                g = 0;
+            }
+            else {
+                System.out.println("Sorry your input cannot be understood.");
+            }
         }
         else {
-            System.out.println("Sorry I couldn't locate the storage facility you're looking for.");
+            g = 1;
         }
+
+        if (g == 1) {
+            System.out.println("Where do you want to store this item? (office or warehouse)");
+            String location = textInput.nextLine();
+
+            if (location.equals("office")) {
+                item = new Office();
+                item.store(barcode);
+            }
+            else if (location.equals("warehouse")) {
+                item = new Warehouse();
+                item.store(barcode);
+            }
+            else {
+                System.out.println("Sorry I couldn't locate the storage facility you're looking for.");
+            }
+        }
+
     }
     private void find() {
         System.out.println("Please enter the barcode of the item you want to find");

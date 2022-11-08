@@ -23,10 +23,7 @@ public class Office implements Storage {
     }
 
     //Format of spots: x-coordinate, y-coordinate, z-coordinate
-    public void store(){
-        System.out.println("Please enter the barcode of the item");
-        barcode = textInput.nextLine();
-
+    public void store(String barcode){
         System.out.println("Please enter the name of the storage space");
         location = textInput.nextLine();
 
