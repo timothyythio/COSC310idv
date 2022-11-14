@@ -22,3 +22,8 @@ This is the directory with folders holding each component.
 # StorageMap
 It handles function point 2 as the locator of stock within the inventory. It has 4 main components:
 - list(). 
+
+# Application
+# Material
+# MaterialList
+
