@@ -35,31 +35,17 @@ As for the final class of the stopper feature, MaterialList class, it stores the
 
 # Functions In Software
 
-ALERT SYSTEM FUNCTIONS:
+ALERT SYSTEM FUNCTIONS THAT IMPLEMENTED TO MAKE THE CODE RUN:
 
-public MaterialList(): it creates an ArrayList.
-
-public boolean addMaterial(Material material): it adds matarials to the ArrayList.
-
-public ArrayList<Material> getMaterialList(): it gets all the materials stored inside the ArrayList.
-  
 public String toString():it returns the elements to the console in a different format.
-  
-getters: gets the desired data depending on the user's choice.
-  
-setters: used to set the components of the constructor. 
-  
-public void importAmount(int imported) throws LimitExceededException: increases the amount by the imported amount if it does not exceed the maxStock.
-  
-public void exportAmount(int exported) throws LimitExceededException: decreases the amount by the exported amount if it has enough stock.
   
 public void checkMinAmount(): checks if the amount left is below minStock.
   
 public void giveWarning(): It gives the warning the user if the stock is below minStock.
   
 public void runApp() throws LimitExceededException: it is the main function of the alert.
-  
-public void materialAdd(): adds the materials to the material list.
-  
+    
 private void importExport(String appType, int materialIndex, int amount) throws LimitExceededException: it does the export and import applications based on the users choices.
+
+These functions were implemented to improve the quality of the user interface. In other words, to increase the usability of the software. If these features were not implemented, it would be a lot harder fot the user to understand and to use the program.
 
