@@ -32,3 +32,22 @@ Application class is the class that has all the alert system functions are combi
 Material class is where the material is added. In other words, its constructor method is used as a materials data input panel. Due to this reason, it also consists of getters and setters. In addition, this is where the limits are chceked by the user's imputs to the console with "importAmount" and "exportAmount" functions. If the limits are exceeded, it executes execptions to show that limits are passed. One feature of the "exportAmount" function is that it bumps up a warning message if the amount of a material drops below the mimimum limit.  
 
 As for the final class of the stopper feature, MaterialList class, it stores the materials as an arraylist made inside this class. With this informtaion, it has functions related to arraylist like: adding material, getting material list to see which elements are stored inside, or a different way to print the elements inside the arraylist using "toString" function.
+
+# Functions In Software
+
+ALERT SYSTEM FUNCTIONS:
+
+public MaterialList(): it creates an ArrayList.
+public boolean addMaterial(Material material): it adds matarials to the ArrayList.
+public ArrayList<Material> getMaterialList(): it gets all the materials stored inside the ArrayList.
+public String toString():it returns the elements to the console in a different format.
+getters: gets the desired data depending on the user's choice.
+setters: used to set the components of the constructor. 
+public void importAmount(int imported) throws LimitExceededException: increases the amount by the imported amount if it does not exceed the maxStock.
+public void exportAmount(int exported) throws LimitExceededException: decreases the amount by the exported amount if it has enough stock.
+public void checkMinAmount(): checks if the amount left is below minStock.
+public void giveWarning(): It gives the warning the user if the stock is below minStock.
+public void runApp() throws LimitExceededException: it is the main function of the alert.
+public void materialAdd(): adds the materials to the material list.
+private void importExport(String appType, int materialIndex, int amount) throws LimitExceededException: it does the export and import applications based on the users choices.
+
