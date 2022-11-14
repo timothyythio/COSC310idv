@@ -38,8 +38,11 @@ As for the final class of the stopper feature, MaterialList class, it stores the
 ALERT SYSTEM FUNCTIONS:
 
 public MaterialList(): it creates an ArrayList.
+
 public boolean addMaterial(Material material): it adds matarials to the ArrayList.
+
 public ArrayList<Material> getMaterialList(): it gets all the materials stored inside the ArrayList.
+  
 public String toString():it returns the elements to the console in a different format.
 getters: gets the desired data depending on the user's choice.
 setters: used to set the components of the constructor. 
