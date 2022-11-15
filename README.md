@@ -54,9 +54,14 @@ These functions were implemented to improve the quality of the user interface. I
 The basic plan and layout of the whole system. It shows how the system run.
 
 public void take(): This function is used to take items from the warehouse.
+
 public void returned(): This function is used to restock items.
+
 public int getPrice(): This return the price of an item.
+
 void checkOut(String iname): Check the name of the input item name and match with the corresponding function.
+
 public void receivePrice(): Used to enter the price of an item.
+
 public void listInventory(): Used to show the list of the inventory.
 
