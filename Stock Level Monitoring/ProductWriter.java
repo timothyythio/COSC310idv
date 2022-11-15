@@ -25,23 +25,23 @@ public class ProductWriter {
 		String inHand = in.nextLine();
 		System.out.println("Enter New Minimum Requirement: ");
 		String minReq = in.nextLine();
-		writeData(id, pName, pNum, pLab, startIn, inRec, inShip, inHand, minReq);
+		writeProduct(id, pName, pNum, pLab, startIn, inRec, inShip, inHand, minReq);
 		System.out.println("Your new product has been written successfully!");
 		
-		main.finish();
+		mainStock.finish();
 		
 		
 	}
 	
-	public static void writeData(String id, String pname, String pnum, String plab, String startin, String inrec, String inship, String inhand, String minreq) {
+	public static void writeProduct(String id, String pname, String pnum, String plab, String startin, String inrec, String inship, String inhand, String minreq) {
 		try {
 				
 			File file = new File("products.txt");
 			FileWriter fw = new FileWriter(file.getPath(), true);
 			BufferedWriter bw = new BufferedWriter(fw);
-
+			
 				
-			bw.write("\n" + id);
+			bw.write(id);
 			bw.write(", " + pname);
 			bw.write(", " + pnum);
 			bw.write(", " + plab);
@@ -53,7 +53,7 @@ public class ProductWriter {
 				
 			bw.close();
 			} catch (IOException e) {
-				System.out.println("File not found!");
+				System.out.println("ERROR!");
 			}
 		
 	}
