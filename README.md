@@ -18,6 +18,19 @@ This is an inventory management system. It is designed to:
 
 # public_workspace
 This is the directory with folders holding each component.
+# StockLevel
+The Stock Level component of the system consists of 3 classes "mainStock", "ProductWriter", and "DataReader". The ProductWriter class contains all the methods and functions necessary to write new products in the inventory/stock, while the DataReader class contains all the methods that reads and returns the stock levels in the inventory. 
+
+mainStock():
+
+Contains the start, finish, and closeProgram functions. start() takes the user to a menu with 3 options to edit, add, or view products. finish() prompts the user to select an option, whether to make another option or terminate the program. closeProgram() closes the whole program
+
+ProductWriter():
+Contains the methods for all functions that have to do with writing a new product.
+
+DataReader():
+Contains the methods for reading data from the database file and editing the products in the database, as well as some helper methods to simplify the process of retrieving and editing the products. 
+
 
 # StorageMap
 It handles function point 2 as the locator of stock within the inventory. It has 4 main components:
