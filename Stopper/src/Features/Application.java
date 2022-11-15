@@ -16,7 +16,7 @@ public class Application {
     Material material1 = new Material("glass", 600, 900, 400);
     Material material2 = new Material("wood", 600, 800, 100);
     Material material3 = new Material("bricks", 120, 535, 553);
-    Material material4 = new Material("polyester", 343, 500, 644);
+    Material material4 = new Material("polyester", 343, 500, 160);
     Material material5 = new Material("vinyl", 655, 700, 157);
     Material material6 = new Material("clay", 655, 900, 234 );
     Material material7 = new Material("aluminum", 712, 850, 654);
