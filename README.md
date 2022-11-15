@@ -46,9 +46,7 @@ Material class is where the material is added. In other words, its constructor m
 
 As for the final class of the stopper feature, MaterialList class, it stores the materials as an arraylist made inside this class. With this informtaion, it has functions related to arraylist like: adding material, getting material list to see which elements are stored inside, or a different way to print the elements inside the arraylist using "toString" function.
 
-# Functions In Software
-
-ALERT SYSTEM FUNCTIONS THAT IMPLEMENTED TO MAKE THE CODE RUN:
+# Stopper Functions
 
 public String toString():it returns the elements to the console in a different format.
   
