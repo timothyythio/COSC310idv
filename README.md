@@ -12,9 +12,8 @@ This is an inventory management system. It is designed to:
 5. Cooperate with management personnel decisions to alter ordering strategy in response to external factors such as drop in supply cost or difficulty getting supplied in the foreseeable future
 6. Alert the responsible individuals when stock levels are not expected to sustain normal operations of the company for an adjustable number of days ahead
 
-(How to run)
-
-(How to compile)
+# Running and Compiling
+To run and compile the system, the user will need to clone the Github repository and run the main class to get started. This will prompt the user to select an option.
 
 # public_workspace
 This is the directory with folders holding each component.
