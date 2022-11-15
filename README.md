@@ -1,7 +1,3 @@
-Format (to be removed):
-What is it about
-How to compile
-How to run
 
 # Introduction
 This is an inventory management system. It is designed to:
