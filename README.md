@@ -49,7 +49,7 @@ private void importExport(String appType, int materialIndex, int amount) throws 
 
 These functions were implemented to improve the quality of the user interface. In other words, to increase the usability of the software. If these features were not implemented, it would be a lot harder fot the user to understand and to use the program.
 
-#Base Plan
+# Base Plan
 
 The basic plan and layout of the whole system. It shows how the system run.
 
