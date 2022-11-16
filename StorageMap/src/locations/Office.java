@@ -22,16 +22,16 @@ public class Office implements Storage {
         }
     }
 
-    //Format of spots: x-coordinate, y-coordinate, z-coordinate
+    //Format of spots: name
     public void store(String barcode){
         System.out.println("Please enter the name of the storage space");
         location = textInput.nextLine();
 
         fileData = new FileReaderWriter();
-        String s = barcode + " " + location;
-        System.out.println("Data {" + s + "} will now be added to file");
+        String spot = barcode + " " + location;
+        System.out.println("Data {" + spot + "} will now be added to file");
         try {
-            fileData.storeIntoInventory("Office", s);
+            fileData.storeIntoInventory("Office", spot);
         } catch (IOException e) {
             System.out.println("Failed to write data to file.");
         }

@@ -35,10 +35,10 @@ public class Warehouse implements Storage {
         location = x + " " + y + " " + z;
 
         fileData = new FileReaderWriter();
-        String s = barcode + " " + location;
-        System.out.println("Data {" + s + "} will now be added to file");
+        String spot = barcode + " " + location;
+        System.out.println("Data {" + spot + "} will now be added to file");
         try {
-            fileData.storeIntoInventory("Warehouse", s);
+            fileData.storeIntoInventory("Warehouse", spot);
         } catch (IOException e) {
             System.out.println("Failed to write data to file.");
         }
