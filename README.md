@@ -1,18 +1,8 @@
 
-# Introduction
-This is an inventory management system. It is designed to:
-1. Monitor stock levels on various materials and products
-2. Mark down positions of various materials and products within the storage facility
-3. Collect data on stock level changes, supply times and defective batches of supply
-4. Plan ahead for a schedule to order new batch of materials based on consumption and lead time
-5. Cooperate with management personnel decisions to alter ordering strategy in response to external factors such as drop in supply cost or difficulty getting supplied in the foreseeable future
-6. Alert the responsible individuals when stock levels are not expected to sustain normal operations of the company for an adjustable number of days ahead
-
 # Running and Compiling
 
-To find the setup instructions, please refer to [setup instructions](/setup)
+To find the software setup instructions, please refer to [setup instructions](/setup)
 
-To install Docker Desktop, please use this link: https://www.docker.com/products/docker-desktop/
 The necessary files to create the container for the SQL server can be found on the GitHub page under the file ```cosc310_sql_setup```. 
 
 To setup the Docker container, create a directory either through the command prompt or manually. This can be name anything but for simplicity and example, the file will be referred to as ```cosc310_sql```
@@ -20,7 +10,6 @@ To setup the Docker container, create a directory either through the command pro
 Once the directory is created, copy all the contents of the ```cosc310_sql_setup``` into the directory
 
 In a command shell, first change the directory to be the directory created. 
-
 ```
 cd cosc310_sql 
 ```
@@ -34,9 +23,16 @@ If everything is successful, MySQL should run on the port 3306. If a port confli
 
 Once Docker has been setup, clone the GitHub Repository and run “MainMenu.java” to get started. 
 
-Inside VSCode, the MSSQL driver mssl-jdbc-11.2.0.jre11.jar needs to be added to the Referenced Libraries in order to run the code properly. Once this is done, everything should run properly
+Inside VSCode, the MSSQL driver [mssl-jdbc-11.2.0.jre11.jar](/mssql-jdbc-11.2.0.jre11.jar) needs to be added to the Referenced Libraries in order to run the code properly. Once this is done, everything should run properly
 
-
+# Introduction
+This is an inventory management system. It is designed to:
+1. Monitor stock levels on various materials and products
+2. Mark down positions of various materials and products within the storage facility
+3. Collect data on stock level changes, supply times and defective batches of supply
+4. Plan ahead for a schedule to order new batch of materials based on consumption and lead time
+5. Cooperate with management personnel decisions to alter ordering strategy in response to external factors such as drop in supply cost or difficulty getting supplied in the foreseeable future
+6. Alert the responsible individuals when stock levels are not expected to sustain normal operations of the company for an adjustable number of days ahead
 # StockLevel
 The Stock Level component of the system consists of 3 classes "mainStock", "ProductWriter", and "DataReader". The ProductWriter class contains all the methods and functions necessary to write new products in the inventory/stock, while the DataReader class contains all the methods that reads and returns the stock levels in the inventory. 
 
