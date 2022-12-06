@@ -19,11 +19,17 @@ docker-compose up -d
 ```
 If everything has been extracted, Docker should look like so:
 
+![image](img/dockerSetup.png)
+![image](img/dockerdownload.png)
+
+
 If everything is successful, MySQL should run on the port 3306. If a port conflict occurs, change th eport to 3307 in the docker-compose.yml file
 
 Once Docker has been setup, clone the GitHub Repository and run “MainMenu.java” to get started. 
 
-Inside VSCode, the MSSQL driver [mssl-jdbc-11.2.0.jre11.jar](/mssql-jdbc-11.2.0.jre11.jar) needs to be added to the Referenced Libraries in order to run the code properly. Once this is done, everything should run properly
+Inside VSCode, the MSSQL driver [mssl-jdbc-11.2.0.jre11.jar](/mssql-jdbc-11.2.0.jre11.jar) needs to be added to the Referenced Libraries in order to run the code properly. Once this is done, everything should run properly.
+
+
 
 # Introduction
 This is an inventory management system. It is designed to:
