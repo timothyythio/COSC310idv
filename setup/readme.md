@@ -1,6 +1,6 @@
 # Environment Setup
 
-Most of the lab assignments require running a database on your computer. These database systems are run using Docker that supports virtual containers so that the software does not have to be directly installed on your computer.
+Below are all the necessary apps/softwares to run the Inventory System
 
 ## Install Docker Desktop
 
@@ -8,7 +8,7 @@ Most of the lab assignments require running a database on your computer. These d
 
 ## Install VSCode
 
-Although you may use any text editor, the officially supported editor is [VSCode](https://code.visualstudio.com/Download).
+Any IDE/editor will work, however VSCode is highly recommended [VSCode](https://code.visualstudio.com/Download).
 
 ## Install Java
 
