@@ -1,3 +1,6 @@
+# Note
+The changes for the individual project are all present in the folder [COSC310 IdvProj](/COSC310 IdvProj). All other files were unchanged
+
 
 # Running and Compiling
 
