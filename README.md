@@ -9,22 +9,42 @@ This is an inventory management system. It is designed to:
 6. Alert the responsible individuals when stock levels are not expected to sustain normal operations of the company for an adjustable number of days ahead
 
 # Running and Compiling
-To run and compile the system, the user will need to clone the Github repository and run the main class to get started. This will prompt the user to select an option.
 
-# public_workspace
-This is the directory with folders holding each component.
+In order to run the Inventory System, Docker Desktop, Visual Studio Code, and a set of files must be downloaded.
+
+To install Docker Desktop, please use this link: https://www.docker.com/products/docker-desktop/
+The necessary files to create the container for the SQL server can be found on the GitHub page under the file ```cosc310_sql_setup```. 
+
+To setup the Docker container, create a directory either through the command prompt or manually. This can be name anything but for simplicity and example, the file will be referred to as ```cosc310_sql```
+
+Once the directory is created, copy all the contents of the ```cosc310_sql_setup``` into the directory
+
+In a command shell, first change the directory to be the directory created. 
+
+```
+cd cosc310_sql 
+```
+Next, run the following command to extract all the files into the Docker container
+```
+docker-compose up -d
+```
+If everything has been extracted, Docker should look like so:
+
+If everything is successful, MySQL should run on the port 3306. If a port conflict occurs, change th eport to 3307 in the docker-compose.yml file
+
+Once Docker has been setup, clone the GitHub Repository and run “MainMenu.java” to get started. 
+
+Inside VSCode, the MSSQL driver mssl-jdbc-11.2.0.jre11.jar needs to be added to the Referenced Libraries in order to run the code properly. Once this is done, everything should run properly
+
+
 # StockLevel
 The Stock Level component of the system consists of 3 classes "mainStock", "ProductWriter", and "DataReader". The ProductWriter class contains all the methods and functions necessary to write new products in the inventory/stock, while the DataReader class contains all the methods that reads and returns the stock levels in the inventory. 
 
-mainStock():
 
-Contains the start, finish, and closeProgram functions. start() takes the user to a menu with 3 options to edit, add, or view products. finish() prompts the user to select an option, whether to make another option or terminate the program. closeProgram() closes the whole program
 
-ProductWriter():
-Contains the methods for all functions that have to do with writing a new product.
 
-DataReader():
-Contains the methods for reading data from the database file and editing the products in the database, as well as some helper methods to simplify the process of retrieving and editing the products. 
+
+
 
 # StorageMap
 StorageMapComponent is a class containing 5 methods named processOperations(), list(), store(), find() and take(). 
