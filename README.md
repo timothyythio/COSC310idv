@@ -29,7 +29,7 @@ Once Docker has been setup, clone the GitHub Repository and run “MainMenu.java
 
 Inside VSCode, the MSSQL driver [mssl-jdbc-11.2.0.jre11.jar](/mssql-jdbc-11.2.0.jre11.jar) needs to be added to the Referenced Libraries in order to run the code properly. Once this is done, everything should run properly.
 
-
+![image](img/vscodeLib.png)
 
 # Introduction
 This is an inventory management system. It is designed to:
