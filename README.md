@@ -10,7 +10,7 @@ This is an inventory management system. It is designed to:
 
 # Running and Compiling
 
-In order to run the Inventory System, Docker Desktop, Visual Studio Code, and a set of files must be downloaded.
+To find the setup instructions, please refer to [setup instructions](../setup)
 
 To install Docker Desktop, please use this link: https://www.docker.com/products/docker-desktop/
 The necessary files to create the container for the SQL server can be found on the GitHub page under the file ```cosc310_sql_setup```. 
