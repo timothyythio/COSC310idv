@@ -42,9 +42,37 @@ This is an inventory management system. It is designed to:
 # StockLevel
 The Stock Level component of the system consists of 3 classes "mainStock", "ProductWriter", and "DataReader". The ProductWriter class contains all the methods and functions necessary to write new products in the inventory/stock, while the DataReader class contains all the methods that reads and returns the stock levels in the inventory. 
 
+## MainMenu:
 
+This class contains a main method that calls the method CreateAndShowGUI();. The CreateAndShowGUI() method is responsible for constructing the layout and components onto the window application pop-up. The class contains imports from java.awt and javax.swing, which is the API used to create the windowed GUI. The MainMenu class contains 4 buttons to let the user select a feature of the inventory system and direct them to the resepective classes. 
 
+## mainStockGui:
 
+This class contains the functions of the Stock Level Monitoring component, and is the main change to the system since the last iteration. The class has the same features as MainMenu does, except it contains extra buttons to allow the user to go back to MainMenu, or exit the program by calling System.exit(0); The “Add Product” button calls on the AddProduct class that is in charge of requesting product specific values from the user and interacting with JDBC to insert the product into the database. The “View Product” button calls the ViewProduct class which retrieves the requested product onto the GUI. The “Edit Product” button calls the EditProduct class which prompts the user to select what changes they would like made to a product. 
+
+## ViewProduct:
+
+The ViewProduct class behaves similarly to the previous two classes, utilizing AWT and Swings to include buttons and labels on the layout to provide users a better and smoother experience in viewing products. ViewProduct contains the method displayProducts() that calls the method from the DatabaseReaderJDBC class to display the products that are available onto a text area. The class also contains the method displayResults() which after the user selects a product to view, is called to call on the method viewProduct() from the DatabaseReaderJDBC class to display the product information that the user requested. 
+
+## AddProduct: 
+
+The AddProduct class is much like the other classes in terms of its layouts. However, it prompts the user to enter information about a new product that the user would like to add into the database such as product id, or product name, and then calls the addProduct() method from the DatabaseReaderJDBC class to implement these additions
+
+## EditProduct:
+
+Much like the AddProduct class, the EditProduct class prompts the user for information on specific changes that they want made onto a product on the database. This could be the product id, product label, etc. Once the program gets the necessary information from the user, the editProduct() method from the DatabaseReaderJDBC class is called onto and updates the changes in the database. 
+
+## DatabaseReaderJDBC
+
+This class serves as the bridge between the GUI and the database. Using the JDBC API, the class is able to include methods that execute SQL queries to reflect changes onto the database. The class contains the methods addProduct(), viewProduct(), editProduct(), and prodList() . The class contains the connection information to connect with the database and make the necessary SQL queries. It imports the java.sql library to use features like the DriverManager, connections, and PreparedStatements to name a few. 
+
+The addProduct(String[] inputs) method takes in a String array from the AddProduct class, which contains the information like the product name, id, etc. for the method to add a new product in the database. The method uses an SQL INSERT statement inside a  PreparedStatement with 9 values that reflect the attributes of the product database (e.g. productId, productName, etc.). The PreparedStatement ensures that an SQL injection attack does not occur, and if one does, an error code is returned and the values are not inserted. 
+
+The editProduct(String prod, String attr, String change) takes 3 Strings as parameters, prod being the product to be changed, attr being the attribute (e.g. productId, productName) that is going to be changed, and change is the new change that the user is requesting to change. These are then put into an SQL UPDATE statement inside a PreparedStatement to prevent SQL injection attacks, and the update is executed if it is valid. Otherwise an error code is returned and reflected on the GUI. 
+
+The viewProduct(String prod) method takes a String as a parameter, which is the product that the user requests to view. This String is then placed inside a SELECT statement inside a PreparedStatement to return the product information, which is then stored in a return array for the GUI to represent visually. 
+
+The prodList() method takes no parameters but returns a String array containing the list of products in the database which is retrieved using the SELECT statement, placing it inside a ResultSet, and iterating through each one of the columns to retrieve only the productNames.
 
 
 
