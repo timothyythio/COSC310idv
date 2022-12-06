@@ -8,7 +8,7 @@ Below are all the necessary apps/softwares to run the Inventory System
 
 ## Install VSCode
 
-Any IDE/editor will work, however VSCode is highly recommended [VSCode](https://code.visualstudio.com/Download).
+Any IDE/editor will work, however [VSCode](https://code.visualstudio.com/Download) is highly recommended.
 
 ## Install Java
 
